@@ -11,6 +11,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.FrameLayout;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -53,6 +54,16 @@ public class MovieActivity extends AppCompatActivity implements MovieFragment.On
         bundle.putString("imdb", movie.imdbId);
 
         detail.setArguments(bundle);
+
+        boolean hotdog = true;
+
+        FrameLayout secondFrame = (FrameLayout) this.findViewById(R.id.containerRight);
+
+        if(secondFrame != null)
+            hotdog = secondFrame.getVisibility() != View.VISIBLE;
+
+        if(hotdog)
+            Log.v(TAG, "hot dog");
 
         //swap the fragments
         getFragmentManager().beginTransaction()
